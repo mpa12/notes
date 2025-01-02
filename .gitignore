@@ -30,3 +30,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.rnd
+/public/adminer.php
