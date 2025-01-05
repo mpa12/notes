@@ -1,5 +1,7 @@
 <?php
 
+use App\Containers\AppSection\User\Models\User;
+
 return [
 
     /*
@@ -14,7 +16,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'api',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -68,7 +70,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('USER_NAMESPACE', 'App\\Containers\\AppSection\\User\\Models\\') . User::class,
+            'model' => User::class,
         ],
 
         // 'users' => [

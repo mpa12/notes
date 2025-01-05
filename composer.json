@@ -34,8 +34,7 @@
         }
     ],
     "require": {
-        "apiato/core": "^8.15.0",
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-curl": "*",
         "ext-gettext": "*",
         "ext-mbstring": "*",
@@ -43,6 +42,9 @@
         "ext-pdo": "*",
         "ext-sodium": "*",
         "ext-tokenizer": "*",
+        "apiato/core": "^8.15.0",
+        "backpack/crud": "^6.7",
+        "backpack/theme-coreuiv4": "^1.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/tinker": "^2.8",
@@ -52,6 +54,7 @@
     "require-dev": {
         "ext-intl": "*",
         "ext-json": "*",
+        "backpack/generators": "^4.0",
         "fakerphp/faker": "^1.19.1",
         "friendsofphp/php-cs-fixer": "^3.8.0",
         "jetbrains/phpstorm-attributes": "^1.0",
