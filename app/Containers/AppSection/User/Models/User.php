@@ -7,10 +7,13 @@ use App\Containers\AppSection\User\Data\Collections\UserCollection;
 use App\Containers\AppSection\User\Enums\Gender;
 use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
+    use CrudTrait;
+
     protected $fillable = [
         'name',
         'email',

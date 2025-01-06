@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Containers\NotesSection\Notes\UI\ADMIN\Controllers\Admin;
+namespace App\Containers\NotesSection\Notes\UI\ADMIN\Controllers;
 
 use App\Containers\NotesSection\Notes\Models\Notes;
 use App\Containers\NotesSection\Notes\UI\ADMIN\Requests\NotesRequest;
