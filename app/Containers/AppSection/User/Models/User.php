@@ -9,10 +9,11 @@ use App\Ship\Contracts\MustVerifyEmail;
 use App\Ship\Parents\Models\UserModel as ParentUserModel;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends ParentUserModel implements MustVerifyEmail
 {
-    use CrudTrait;
+    use CrudTrait, HasRoles;
 
     protected $fillable = [
         'name',
