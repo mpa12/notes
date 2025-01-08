@@ -5,10 +5,10 @@
     </a>
 </li>
 
-<x-backpack::menu-dropdown title="Add-ons" icon="la la-puzzle-piece">
-    <x-backpack::menu-dropdown-item title="Users" icon="la la-user" :link="backpack_url('user')"/>
+<x-backpack::menu-dropdown title="Shop" icon="bi bi-shop fs-1rem">
+    <x-backpack::menu-item title="Products" icon="bi bi-cart fs-1rem" :link="backpack_url('product')" />
 </x-backpack::menu-dropdown>
 
-<x-backpack::menu-dropdown title="Notes" icon="bi bi-shop fs-1rem">
-    <x-backpack::menu-item title="Notes" icon="bi bi-music-note-list fs-1rem" :link="backpack_url('notes')" />
+<x-backpack::menu-dropdown title="Add-ons" icon="la la-puzzle-piece">
+    <x-backpack::menu-dropdown-item title="Users" icon="la la-user" :link="backpack_url('user')"/>
 </x-backpack::menu-dropdown>
