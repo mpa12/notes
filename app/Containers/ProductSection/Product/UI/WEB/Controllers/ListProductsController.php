@@ -8,9 +8,9 @@ use App\Ship\Parents\Controllers\WebController;
 
 class ListProductsController extends WebController
 {
-    public function index()
+    public function index(ListProductsRequest $request)
     {
-        $products = app(ListProductsAction::class)->run();
+        $products = app(ListProductsAction::class)->run($request);
         // ...
     }
 }
