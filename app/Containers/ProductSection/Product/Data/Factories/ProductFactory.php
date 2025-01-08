@@ -3,6 +3,7 @@
 namespace App\Containers\ProductSection\Product\Data\Factories;
 
 use App\Containers\ProductSection\Product\Models\Product;
+use App\Containers\ProductSection\ProductCategory\Models\ProductCategory;
 use App\Ship\Parents\Factories\Factory as ParentFactory;
 use Illuminate\Support\Str;
 
@@ -35,6 +36,7 @@ class ProductFactory extends ParentFactory
             'sku' => fake()->slug(),
             'status' => fake()->randomElement([1]),
             'is_featured' => fake()->boolean(10),
+            'product_category_id' => ProductCategory::all()->random()->id,
         ];
     }
 }
