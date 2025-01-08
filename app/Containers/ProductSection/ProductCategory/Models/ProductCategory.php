@@ -2,6 +2,7 @@
 
 namespace App\Containers\ProductSection\ProductCategory\Models;
 
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use App\Containers\ProductSection\ProductCategory\Data\Factories\ProductCategoryFactory;
 use App\Ship\Parents\Models\Model as ParentModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductCategory extends ParentModel
 {
-    use SoftDeletes, HasFactory;
+    use SoftDeletes, HasFactory, CrudTrait;
 
     protected $fillable = [
         'name',

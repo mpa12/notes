@@ -7,6 +7,7 @@
 
 <x-backpack::menu-dropdown title="Shop" icon="bi bi-shop fs-1rem">
     <x-backpack::menu-item title="Products" icon="bi bi-cart fs-1rem" :link="backpack_url('product')" />
+    <x-backpack::menu-item title="Product categories" icon="bi bi-tag fs-1rem" :link="backpack_url('product-category')" />
 </x-backpack::menu-dropdown>
 
 <x-backpack::menu-dropdown title="Add-ons" icon="la la-puzzle-piece">
