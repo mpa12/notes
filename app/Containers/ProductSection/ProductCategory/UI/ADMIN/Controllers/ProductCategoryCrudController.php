@@ -28,7 +28,7 @@ class ProductCategoryCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup(): void
@@ -40,45 +40,163 @@ class ProductCategoryCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation(): void
     {
-        CRUD::setFromDb(); // set columns from db columns.
+        $this->crud->column([
+            'label' => 'Name',
+            'name' => 'name',
+            'type' => 'text',
+        ]);
 
-        /**
-         * Columns can be defined using the fluent syntax:
-         * - CRUD::column('price')->type('number');
-         */
+        $this->crud->column([
+            'label' => 'Parent',
+            'type' => 'select',
+            'name' => 'parent_id',
+            'entity' => 'parent',
+            'model' => ProductCategory::class,
+            'attribute' => 'name',
+        ]);
+
+        $this->crud->column([
+            'label' => 'Image',
+            'name' => 'imageUrl',
+            'type' => 'image',
+        ]);
+
+        $this->crud->column([
+            'label' => 'Status',
+            'name' => 'status',
+            'type' => 'enum',
+            'enum_function' => 'readable',
+        ]);
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
     protected function setupCreateOperation(): void
     {
         CRUD::setValidation(ProductCategoryRequest::class);
-        CRUD::setFromDb(); // set fields from db columns.
 
-        /**
-         * Fields can be defined using the fluent syntax:
-         * - CRUD::field('price')->type('number');
-         */
+        $this->crud->group(
+            $this->crud->field([
+                'label' => 'Name',
+                'name' => 'name',
+                'type' => 'text',
+            ]),
+            $this->crud->field([
+                'label' => 'Slug',
+                'name' => 'slug',
+                'type' => 'text',
+            ]),
+        )->wrapper([
+            'class' => 'form-group col-sm-6 mb-3'
+        ]);
+
+        $this->crud->group(
+            $this->crud->field([
+                'label' => 'Image',
+                'name' => 'image',
+                'type' => 'upload',
+                'upload' => true,
+            ]),
+            $this->crud->field([
+                'label' => 'Status',
+                'name' => 'status',
+                'type' => 'enum',
+                'enum_function' => 'readable',
+            ]),
+        )->wrapper([
+            'class' => 'form-group col-sm-6 mb-3'
+        ]);
+
+        $this->crud->field([
+            'label' => 'Parent',
+            'type' => 'select',
+            'name' => 'parent_id',
+            'entity' => 'parent',
+            'model' => ProductCategory::class,
+            'attribute' => 'name',
+            'options' => fn($query) => $query->orderBy('name', 'ASC')->get(),
+            'prefix' => config('icons.product_categories'),
+        ]);
+
+        $this->crud->field([
+            'label' => 'Description',
+            'name' => 'description',
+            'type' => 'textarea',
+        ]);
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
     protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
+    }
+
+    protected function setupShowOperation(): void
+    {
+        $this->crud->column([
+            'label' => 'Name',
+            'name' => 'name',
+            'type' => 'text',
+        ]);
+        $this->crud->column([
+            'label' => 'Slug',
+            'name' => 'slug',
+            'type' => 'text',
+        ]);
+
+        $this->crud->column([
+            'label' => 'Image',
+            'name' => 'imageUrl',
+            'type' => 'image',
+        ]);
+
+        $this->crud->column([
+            'label' => 'Parent',
+            'type' => 'select',
+            'name' => 'parent_id',
+            'entity' => 'parent',
+            'model' => ProductCategory::class,
+            'attribute' => 'name',
+            'options' => fn($query) => $query->orderBy('name', 'ASC')->get(),
+        ]);
+
+        $this->crud->column([
+            'label' => 'Status',
+            'name' => 'status',
+            'type' => 'enum',
+            'enum_function' => 'readable',
+        ]);
+
+        $this->crud->column([
+            'label' => 'Description',
+            'name' => 'description',
+            'type' => 'textarea',
+        ]);
+
+        $this->crud->column([
+            'label' => 'Created at',
+            'name' => 'created_at',
+            'type' => 'datetime',
+        ]);
+        $this->crud->column([
+            'label' => 'Updated at',
+            'name' => 'updated_at',
+            'type' => 'datetime',
+        ]);
     }
 }
