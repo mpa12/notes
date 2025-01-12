@@ -2,6 +2,7 @@
 
 namespace App\Containers\ProductSection\Product\Models;
 
+use App\Containers\ProductSection\Product\Enum\ProductStatusEnum;
 use App\Containers\ProductSection\ProductCategory\Models\ProductCategory;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use App\Containers\ProductSection\Product\Data\Factories\ProductFactory;
@@ -27,6 +28,10 @@ class Product extends ParentModel
         'status',
         'is_featured',
         'product_category_id',
+    ];
+
+    protected $casts = [
+        'status' => ProductStatusEnum::class,
     ];
 
     public function productCategory(): BelongsTo
