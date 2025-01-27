@@ -264,6 +264,13 @@ class ProductCrudController extends CrudController
             'name' => 'stock',
             'type' => 'number',
         ])->prefix(config('icons.stock'));
+
+        $this->crud->field([
+            'label' => 'Images',
+            'name' => 'images',
+            'type' => 'custom_html',
+            'value' => view('productSection@productImage::images'),
+        ]);
     }
 
     /**

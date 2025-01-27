@@ -13,6 +13,7 @@ class ShipProvider extends ParentMainServiceProvider
     public array $serviceProviders = [
         EventServiceProvider::class,
         RouteServiceProvider::class,
+        ViewsServiceProvider::class,
     ];
 
     /**
