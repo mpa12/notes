@@ -106,6 +106,7 @@ return [
     // Please note that support for Vite was added in Laravel 9.19. Earlier versions are not able to use this feature.
     'vite_styles' => [ // resource file_path
          'resources/css/app.scss',
+         'resources/js/app.js',
     ],
 
     // --------------

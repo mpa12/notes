@@ -8,7 +8,8 @@
     <div class="images-upload__images">
         <div class="images-upload__images__item">
             <img alt="" src="https://i.pinimg.com/236x/73/d1/09/73d10901ec00f102b2274dc7b72857cc.jpg">
-            <span>основное фото</span>
+            <span class="images-upload__images__item__text">основное фото</span>
+            <span class="images-upload__images__item__close bi bi-x"></span>
         </div>
         <div class="images-upload__images__item images-upload__images__item--button">
             <label class="bi bi-camera" for="images">
