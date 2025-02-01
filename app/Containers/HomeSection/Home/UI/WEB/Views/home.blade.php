@@ -1,4 +1,4 @@
-@vite('resources/css/app.css', 'resources/js/app.js')
+@vite('resources/css/app.scss', 'resources/js/app.js')
 
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
