@@ -17,4 +17,5 @@
             </label>
         </div>
     </div>
+    <input type="hidden" name="images-json">
 </div>
