@@ -5,6 +5,7 @@ namespace App\Containers\ProductSection\Product\UI\ADMIN\Controllers;
 use App\Containers\ProductSection\Product\Models\Product;
 use App\Containers\ProductSection\Product\UI\ADMIN\Requests\ProductRequest;
 use App\Containers\ProductSection\ProductCategory\Models\ProductCategory;
+use App\Containers\ProductSection\ProductImage\Actions\UpdateProductImagesAction;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
@@ -36,7 +37,7 @@ class ProductCrudController extends CrudController
     {
         CRUD::setModel(Product::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
-        CRUD::setEntityNameStrings('product', 'products');
+        CRUD::setEntityNameStrings('товар', 'товары');
     }
 
     /**
@@ -269,7 +270,15 @@ class ProductCrudController extends CrudController
             'label' => 'Images',
             'name' => 'images',
             'type' => 'custom_html',
-            'value' => view('productSection@productImage::images'),
+            'value' => view('productSection@productImage::images')->with([
+                'name' => 'images',
+                'product' => $this->crud->getCurrentEntry(),
+            ]),
+            'events' => [
+                'saved' => function (Product $product) {
+                    app(UpdateProductImagesAction::class)->run($product, 'images');
+                },
+            ]
         ]);
     }
 

@@ -35,6 +35,7 @@
 
         setRemoveEventListeners();
         updateImagesJson();
+        updateMainImage();
 
         /*
         | Functions
@@ -88,7 +89,7 @@
         }
 
         function updateImagesJson(){
-            const imagesJsonInput = imagesField.querySelector('[name="images-json"]');
+            const imagesJsonInput = imagesField.querySelector('[data-name="images-json"]');
             const images = getImages();
 
             const imagesJson = Array.from(images).map((imageElement, index) => {
@@ -96,6 +97,7 @@
                 return {
                     src: imgSrc,
                     number: index,
+                    id: imageElement.dataset.id ?? null,
                 };
             });
 

@@ -6,16 +6,18 @@
         </p>
     </div>
     <div class="images-upload__images">
-        <div class="images-upload__images__item">
-            <img alt="" src="https://i.pinimg.com/236x/73/d1/09/73d10901ec00f102b2274dc7b72857cc.jpg">
-            <span class="images-upload__images__item__text">основное фото</span>
+        @foreach($product->images as $image)
+        <div class="images-upload__images__item" data-id="{{ $image->id }}">
+            <img alt="{{ $image->alt_text }}" src="{{ $image->full_url }}">
+            <span class="images-upload__images__item__text"></span>
             <span class="images-upload__images__item__close bi bi-x"></span>
         </div>
+        @endforeach
         <div class="images-upload__images__item images-upload__images__item--button">
-            <label class="bi bi-camera" for="images">
-                <input type="file" id="images" name="images" accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic">
+            <label class="bi bi-camera">
+                <input type="file" accept="image/gif,image/png,image/jpeg,image/pjpeg,image/heic">
             </label>
         </div>
     </div>
-    <input type="hidden" name="images-json">
+    <input type="hidden" name="{{ $name }}-custom" data-name="images-json">
 </div>

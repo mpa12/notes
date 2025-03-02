@@ -63,7 +63,7 @@ return [
     'home_link' => 'admin',
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo' => '<b>Музыкальный</b> кот',
+    'project_logo' => '<div class="admin-menu__logo"><img src="/images/logo/logo.svg"><span><b>Музыкальный</b> кот</span></div>',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,
