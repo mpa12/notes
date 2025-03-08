@@ -24,5 +24,5 @@
             </label>
         </div>
     </div>
-    <input type="hidden" name="{{ $field['name'] }}-custom" data-name="images-json">
+    <input type="hidden" name="{{ $field['name'] }}-{{ $field['suffix'] }}" data-name="images-json">
 </div>

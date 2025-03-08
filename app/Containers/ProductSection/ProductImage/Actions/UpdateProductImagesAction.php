@@ -5,6 +5,7 @@ namespace App\Containers\ProductSection\ProductImage\Actions;
 use App\Containers\ProductSection\Product\Models\Product;
 use App\Containers\ProductSection\ProductImage\Models\ProductImage;
 use App\Ship\Parents\Actions\Action as ParentAction;
+use App\Ship\Parents\Models\Model;
 use App\Ship\Tasks\SaveBase64ImageTask;
 use Illuminate\Support\Collection;
 
@@ -12,14 +13,12 @@ class UpdateProductImagesAction extends ParentAction
 {
     /**
      * @param Product $product
-     * @param string $inputName
+     * @param Collection $requestImages
      *
      * @return void
      */
-    public function run(Product $product, string $inputName): void
+    public function run(Product $product, Collection $requestImages): void
     {
-        $requestImages = collect(json_decode(request()->input("$inputName-custom")));
-
         // Существующие изображения
         $existsImages = $product->images;
 

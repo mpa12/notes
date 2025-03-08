@@ -5,6 +5,7 @@ namespace App\Containers\ProductSection\Product\UI\ADMIN\Controllers;
 use App\Containers\ProductSection\Product\Models\Product;
 use App\Containers\ProductSection\Product\UI\ADMIN\Requests\ProductRequest;
 use App\Containers\ProductSection\ProductCategory\Models\ProductCategory;
+use App\Containers\ProductSection\ProductImage\Actions\UpdateProductImagesAction;
 use App\Ship\Backpack\CRUD\Fields\ImageMultipleCrudField;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -269,6 +270,7 @@ class ProductCrudController extends CrudController
         new ImageMultipleCrudField([
             'label' => 'Images',
             'name' => 'images',
+            'savedCallback' => [app(UpdateProductImagesAction::class), 'run'],
         ]);
     }
 

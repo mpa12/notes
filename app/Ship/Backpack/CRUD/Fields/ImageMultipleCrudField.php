@@ -2,13 +2,13 @@
 
 namespace App\Ship\Backpack\CRUD\Fields;
 
-use App\Containers\ProductSection\Product\Models\Product;
-use App\Containers\ProductSection\ProductImage\Actions\UpdateProductImagesAction;
 use App\Ship\Parents\Backpack\CrudField;
+use App\Ship\Parents\Models\Model;
 
 class ImageMultipleCrudField extends CrudField
 {
     private array $definitions;
+    private mixed $savedCallback;
 
     public function __construct($nameOrDefinitionArray)
     {
@@ -17,19 +17,28 @@ class ImageMultipleCrudField extends CrudField
             'name' => 'images',
             'type' => 'image_multiple',
             'events' => [
-                'saved' => [$this, 'saved'],
-            ]
+                'saved' => $this->saved(...),
+            ],
+            'savedCallback' => null,
+            'suffix' => 'ImageMultipleCrudField',
         ], $nameOrDefinitionArray);
 
         $this->definitions = $nameOrDefinitionArray;
 
+        $this->savedCallback = $nameOrDefinitionArray['savedCallback'];
+
         parent::__construct($nameOrDefinitionArray);
     }
 
-    private function saved(Product $product): void
+    private function saved(Model $model): void
     {
         $name = $this->definitions['name'];
+        $suffix = $this->definitions['suffix'];
 
-        app(UpdateProductImagesAction::class)->run($product, $name);
+        $requestData = collect(json_decode(request()->input("$name-$suffix")));
+
+        if (is_callable($this->savedCallback)) {
+            call_user_func($this->savedCallback, $model, $requestData);
+        }
     }
 }
