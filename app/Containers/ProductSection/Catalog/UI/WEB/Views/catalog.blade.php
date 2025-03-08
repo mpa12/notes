@@ -1,3 +1,3 @@
 <x-layout>
-Hello world!
+Catalog
 </x-layout>
